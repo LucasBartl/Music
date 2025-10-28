@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+
+    --ff:  "Inter", sans-serif;
+    --autor: .75rem var(--ff);
+
+}
+body{
+    background-image: url(../assets/gradient-bg-small.jpg) ;
+    background-size: cover;
+    min-height: 100vh;
+
+
+}
+
+.container{
+    box-sizing: border-box;
+    width: 25rem;
+    text-align: center;
+    margin: 0 auto;
+    margin-block: 10rem;
+    
+}
+html{
+    font-family: var(--ff);
+    
+    h3{
+        color: #E5E7EB;
+    }
+    p{
+        color: #4D5562;
+    }
+}
+

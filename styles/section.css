@@ -1,0 +1,70 @@
+section {
+
+    display: grid;
+
+    .card {
+        box-sizing: border-box;
+        border: 1px solid #212936;
+        height: 36rem;
+        padding: 1.5rem;
+        background-color: #212936;
+        border-radius: 1rem;
+
+        img {
+            width: 100%;
+            border-radius: 1rem;
+        }
+
+        h3 {
+            margin-top: 1rem;
+        }
+
+        p {
+            margin-top: .5rem;
+        }
+
+        #loading {
+            margin-top: 3rem;
+            background-color: #E5E7EB;
+           
+            height: .3rem;
+            border-radius: 1rem;
+            align-items: center;
+
+            .time {
+                color: #4D5562;
+                font-size: .625rem;
+                display: flex;
+                position: relative;
+                bottom: 1.9rem;
+                justify-content: space-between;
+            }
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 1rem;
+            align-items: center;
+
+            button{
+                cursor: pointer;
+                background-color: transparent;
+                border: transparent;
+            }
+
+            #pause{
+                background-color: #C93B76;
+                border-radius: 50%;
+                height: 3rem;
+                width: 3rem;
+            }
+            button:hover{
+                scale: 1.1;
+            }
+        }
+    }
+
+
+}
