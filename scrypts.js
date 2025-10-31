@@ -1,12 +1,14 @@
 const btnpause = document.querySelector("#btnpause");
 const btreturn = document.querySelector("#btreturn");
 const btnnext = document.querySelector("#btnnext");
-const timestart = document.querySelector("#timestart");
-const timeend = document.querySelector("#timeend");
+const start = document.querySelector("#start");
+const end = document.querySelector("#end");
 const box = document.querySelector("#box");
 const h3 = document.querySelector("#box h3");
 const p = document.querySelector("#box p");
 const logo = document.querySelector("#box img");
+const progress = document.querySelector("#progress");
+
 
 const playlist = [
     {
@@ -31,7 +33,7 @@ const audio = new Audio(playlist[currentSongIndex].src);
 btnpause.addEventListener("click", (play) => {
 
 
-    timeend.innerHTML = new Audio(playlist[currentSongIndex].src).duration;
+
 
     if (audio.paused == false) {
         audio.pause()
@@ -40,7 +42,7 @@ btnpause.addEventListener("click", (play) => {
         audio.play();
         return
     }
-
+    progressBar()
 
 
 })
@@ -72,8 +74,39 @@ btreturn.addEventListener("click", () => {
 
 
 
-document.querySelector("#progress").addEventListener("input", function () {
+function tempSong() {
+    const val = (progress.value - progress.min) / (progress.max - progress.min) * 100;
+    progress.style.background = `linear-gradient(to right, #e91e63 ${val}%, #ffffff ${val}%)`;
+}
+
+progress.addEventListener("input", function () {
     audio.currentTime = (this.value / 100) * audio.duration;
+    tempSong();
 });
 
+audio.addEventListener("timeupdate", function () {
+    progress.value = (audio.currentTime / audio.duration) * 100;
+    tempSong();
+    time()
+});
 
+function time() {
+
+
+    let currentValue = audio.currentTime;
+
+    let min = Math.floor(currentValue / 60);
+    let secon = Math.floor(currentValue % 60);
+
+    start.innerHTML = `${min.toString().padStart(2, "0")}:${secon.toString().padStart(2, "0")}`;;
+
+    let totalSeconds = Math.floor(audio.duration);
+
+    let remaining = Math.floor(audio.duration - currentValue);
+
+    let remMin = Math.floor(remaining / 60);
+    let remSec = Math.floor(remaining % 60);
+    let formattedRemaining = `${remMin.toString().padStart(2, "0")}:${remSec.toString().padStart(2, "0")}`;
+
+    end.innerHTML = formattedRemaining;
+}
